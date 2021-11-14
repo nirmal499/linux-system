@@ -1,0 +1,22 @@
+mph_to_kph:
+
+$ cat avg.txt | awk '{ print $3 }' | ./mph_to_kph
+
+$ cat avg.txt | awk '{ print $3 }' | ./mph_to_kph 2> /dev/null
+
+$ cat avg.txt | awk '{ print $3 }' | ./mph_to_kph 2> /dev/null | sed 's/$/ km\/h/'
+
+After cd ..
+$ cat ch1/avg.txt | awk '{ print $3 }' | ./exist.sh ch1/mph_to_kph.c 2> /dev/null | \
+> sed 's/$/ km\/h/'
+
+mph_to_kph_v2:
+
+After cd ..
+
+$ cat ch1/avg_garbage.txt | awk '{ print $3 }' | ./exist.sh ch1/mph_to_kph_v2.c
+
+$ cat ch1/avg_garbage.txt | awk '{ print $3 }' | ./exist.sh ch1/mph_to_kph_v2.c -c
+
+$ (cat ch1/avg_garbage.txt | awk '{ print $3 }' | ./exist.sh ch1/mph_to_kph_v2.c -c) 2> errors.txt 1> output.txt
+
