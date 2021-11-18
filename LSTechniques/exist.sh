@@ -17,7 +17,8 @@ if [[ -e $1 ]]; then
 
     file_name_without_extension=`basename $1 .c`
 
-    gcc -Wall $1 -o bin/${file_name_without_extension}.out
+    flag='-Wall -Wextra -pedantic'
+    gcc ${flag} $1 -o bin/${file_name_without_extension}.out
 
     shift 1
 
