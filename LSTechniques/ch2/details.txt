@@ -1,0 +1,23 @@
+is-it-prime.c:
+
+We need to set the $LD_LIBRARY_PATH environment variable to the
+directory where the library resides before we can run the program. The reason
+for this is that the library is dynamically linked and is not on the usual system path
+for libraries:
+
+cd sharedlib
+
+gcc -Wall -Wextra -pedantic -fPIC -c prime.c
+OR
+gcc -c prime.c -fPIC -o prime.o
+
+gcc -shared -Wl,-soname,libprime.so -o libprime.so prime.o
+OR
+gcc -shared prime.o -o libprime.so
+
+gcc -c ../is-it-prime.c -o ../is-it-prime.o
+gcc ../is-it-prime.o -L${PWD} -lprime -o ../is-it-prime.out
+
+TO RUN THE EXECUTABLE EDIT LD_LIBRARY_PATH:
+export LD_LIBRARY_PATH=${PWD}:${LD_LIBRARY_PATH}
+

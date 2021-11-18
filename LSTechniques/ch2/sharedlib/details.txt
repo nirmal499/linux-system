@@ -1,0 +1,5 @@
+Creating our own shared library:
+
+$ gcc -Wall -Wextra -pedantic -fPIC -c prime.c
+
+$ gcc -shared -Wl,-soname,libprime.so -o libprime.so prime.o
