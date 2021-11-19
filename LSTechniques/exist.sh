@@ -50,5 +50,3 @@ else
     # file dosen't exist
 
 fi
-
-exit 0 # If the file or directory exists, we exit with 0
