@@ -4,3 +4,4 @@ test.*
 *.so
 *o
 object_files
+test*
