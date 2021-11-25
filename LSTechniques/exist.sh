@@ -8,7 +8,7 @@
 if [[ $# -eq 0 || $# -gt 4 ]]; then
     echo "You must supply file_name."
     echo "Example: $0 /etc.c arg1,arg2 lm,lprime"
-    echo "Example: $0 /etc.c "" lm,lprime"
+    echo "Example: $0 /etc.c \"\" lm,lprime"
     exit 1 # Return with value 1
 fi
 
