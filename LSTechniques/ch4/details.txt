@@ -1,0 +1,104 @@
+filesystemOps:
+
+1. A filename isn't the actual file in a Linux or Unix system. It's just a pointer to an
+inode. The inode has information about where the actual data is stored and a lot of
+meta data about the file, such as the file mode, last modification date, and owner
+
+$ stat file_name
+
+2. Creating a new hard link to our test file, testfile1. We'll name the
+new hard link my-file
+
+$ ln testfile1 my-file
+$ ln -s my-file my-file-soft-link
+
+3. my-stat.c
+It gives filemode _ _ _ _ _ _
+
+First two is 
+
+14 socket
+12 symbolic link
+10 regular file
+06 block device
+04 directory
+02 character device
+01 FIFO
+
+Third octal bit is for the set-user-ID bit, the set-group-ID bit, and the sticky bit.
+Remember that the set-user-ID is denoted by an s in the user's execute position, and the set-group-ID is
+denoted by an s in the group's execute bit. A t character denotes the sticky bit in the last
+execute bit position (the "others"). 
+s s t
+4 2 1
+
+The Last three octal digits are for the access mode.
+
+r w x
+4 2 1
+
+Final: If we add up everything we just learned and translate the file mode 100755 from the
+preceding example output from my-stat.c, we get this:
+10 = a regular file
+0 = no set-user-ID, set-group-ID or sticky bit is set
+755 = the user can read, write, and execute it. The group can
+read and execute it, and all others can also read and execute
+it.
+
+$ chmod 755 file_name
+$ chmod 7777 file_name
+
+To change the owner of a file, we must be root.
+
+Change the owner of file_name to root using the chown command:
+$  sudo chown root file_name
+
+If we want to change both the owner and the group, we separate the user and the
+group using a colon. The first field is the owner, and the second field is the group:
+$ sudo chown root:root filename
+
+======================================================================================================================
+fileIO:
+
+1. fd-write.c: 
+$ ./exist.sh ch4/fileIO/fd-write.c ch4/testfile1.txt,"Hi"
+
+2. stream-write.c:
+When we press Ctrl + D, we send an EOF to the program, meaning End Of File,
+indicating no more data is to be received
+
+$ ./exist.sh ch4/fileIO/stream-write.c ch4/testfile1.txt
+Hello! How are you doing?
+I'm doing just fine, thank you.
+Ctrl+D
+
+3. binary-write.c:
+Since 'test-my-binary-file' is a binary file, we can't read it with programs such as more. But we can, however, look at it
+with a program called hexdump:
+
+$ ./binary-write
+Type two floating point numbers, separated by a space:
+3.14159 2.71828
+
+$ file test-my-binary-file
+test-my-binary-file: data
+
+$ hexdump -C test-my-binary-file
+00000000 d0 0f 49 40 4d f8 2d 40 |..I@M.-@|
+00000008
+
+4. fd-read.c:
+$ ./exist.sh ch4/fileIO/fd-seek.c ch4/testfile1.txt,10
+$ ./exist.sh ch4/fileIO/fd-seek.c ch4/testfile1.txt,0
+
+5. fd-seek.c:
+
+This is done using lseek on fd 
+$ ./exist.sh ch4/fileIO/fd-seek.c ch4/testfile1.txt,10,3 : Go to position 10 and read 3 bytes from three
+
+This is done using fseek on file stream
+$ ./exist.sh ch4/fileIO/stream-seek.c ch4/testfile1.txt,5,10 : Read from position 5 to 10 from a file
+
+
+
+
