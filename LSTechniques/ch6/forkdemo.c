@@ -24,15 +24,15 @@ int main(void)
     if (pid == 0)
     {
         /* if pid is 0 we are in the child process */
-        printf("Hello from the child process!\n");
+        printf("Hello from the child process! %d %d \n", pid, getpid());
         sleep(120);
     }
     else if (pid > 0)
     {
         /* if pid is greater than 0 we are in the parent */
-        printf("Hello from the parent process! "
+        printf("Hello from the parent process! %d : "
                "My child has PID %d\n",
-               pid);
+               getpid(), pid);
         sleep(120);
     }
     else
