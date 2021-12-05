@@ -1,0 +1,29 @@
+my-daemon-ctl.c:
+It is not working. It giving error
+
+$ ./exist.sh ch10/my-daemon-ctl.c 
+PID 6070 doesn't belong to /usr/local/sbin/my-daemon-v2
+
+
+msg-sender.c and msg-reciever.c:
+
+nbaskey@pop-os:~/Desktop/cpp_c_py_rust_js_dev/linuxSystem/LSTechniques:(master)
+$ ./exist.sh ch10/msg-sender.c "Hello First Message" -lrt
+Usage: ./bin/msg-sender.out 'my message'
+nbaskey@pop-os:~/Desktop/cpp_c_py_rust_js_dev/linuxSystem/LSTechniques:(master)
+$ ./exist.sh ch10/msg-sender.c 'Hello First Message' -lrt
+Usage: ./bin/msg-sender.out 'my message'
+nbaskey@pop-os:~/Desktop/cpp_c_py_rust_js_dev/linuxSystem/LSTechniques:(master)
+$ ./exist.sh ch10/msg-sender.c FirstMessage -lrt
+nbaskey@pop-os:~/Desktop/cpp_c_py_rust_js_dev/linuxSystem/LSTechniques:(master)
+$ ./exist.sh ch10/msg-sender.c SecondMessage -lrt
+nbaskey@pop-os:~/Desktop/cpp_c_py_rust_js_dev/linuxSystem/LSTechniques:(master)
+$ ./exist.sh ch10/msg-sender.c THirdMessage -lrt
+nbaskey@pop-os:~/Desktop/cpp_c_py_rust_js_dev/linuxSystem/LSTechniques:(master)
+$ ./exist.sh ch10/msg-reciever.c "" -lrt
+3 messages in queue
+FirstMessage
+SecondMessage
+THirdMessage
+nbaskey@pop-os:~/Desktop/cpp_c_py_rust_js_dev/linuxSystem/LSTechniques:(master)
+
