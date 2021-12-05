@@ -4,11 +4,14 @@
 # Usage: ./exists file_name [arguments_comma_separated] [dependencies_comma_separated]  
 #######################################################################################
 
+# Incase arguments are string then it does not treat them as string
+# Like 'Hello World' will become Hello World
+
 # Check if the user supplied file_name
 if [[ $# -eq 0 || $# -gt 4 ]]; then
     echo "You must supply file_name."
-    echo "Example: $0 /etc.c arg1,arg2 lm,lprime"
-    echo "Example: $0 /etc.c \"\" lm,lprime"
+    echo "Example: $0 /etc.c arg1,arg2 -lm,-lprime"
+    echo "Example: $0 /etc.c \"\" -lm,-lprime"
     exit 1 # Return with value 1
 fi
 
