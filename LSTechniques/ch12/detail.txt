@@ -1,0 +1,20 @@
+For debugging use -g flag when compiling with gcc
+
+SOME GDB COMMANDS:
+
+1. gdb ./a.out
+2. break main OR break line_number
+3. run OR run argument_passed_in argv : e.g run 9
+4. next : execute the next line and shows you the next line that is to be executed
+5. print variable_name
+6. watch variable_name : Whenever the variable changes it shows you the old value and the new value
+7. x/20bd : 20bd says the size we want
+to read is 20, and we want to present it in groups of bytes (the b) and print the content
+using decimal notation (the d)
+
+8. set text[5] = 'y'
+9. set text[19] = '\0'
+
+10. continue :  we can use the continue command to let the program run until the end
+11. quit : Quit from the gdb
+
